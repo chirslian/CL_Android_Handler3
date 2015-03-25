@@ -44,15 +44,18 @@ public class MainActivity extends ActionBarActivity {
 		public void run() {
 			// TODO Auto-generated method stub
 			super.run();
-			
+			//准备looper对象
 			Looper.prepare();
+			//在workthread 当中生成一个handler 对象
 			handler = new Handler(){
-
+				
 				@Override
 				public void handleMessage(Message msg) {
 					System.out.println("get message what = "+msg.what);
 				}
 			};
+			//调用Looper.loop();Looper将不断的从消息队列中取出对象，然后调用handleMessage()方法来处理该对象
+			//如果消息队列当中没有对象，则该线程阻塞
 			Looper.loop();
 			
 		}
